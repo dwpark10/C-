@@ -15,28 +15,28 @@ int ans = -1;
 int count = 0;
 
 void Solve(int x, int y){
-	visited[map[x][y]-'A'] = true;
-	count += 1;
+    visited[map[x][y]-'A'] = true;
+    count += 1;
 
-	for(int i = 0; i < 4; i++){
-		int nx = x + dx[i];
-		int ny = y + dy[i];
+    for(int i = 0; i < 4; i++){
+        int nx = x + dx[i];
+        int ny = y + dy[i];
 
-		if(nx >= 0 && nx < R && ny >= 0 && ny < C){
-			if(visited[map[nx][ny] - 'A'] == true){
-				if(count >= ans)
-					ans = count;
-				continue;
-			}else{
-				Solve(nx, ny);
-			}
-		}
-	}
+        if(nx >= 0 && nx < R && ny >= 0 && ny < C){
+            if(visited[map[nx][ny] - 'A'] == true){
+                if(count >= ans)
+                    ans = count;
+                continue;
+            }else{
+                Solve(nx, ny);
+            }
+        }
+    }
 
-	visited[map[x][y] - 'A'] = false;
-	count -= 1;
+    visited[map[x][y] - 'A'] = false;
+    count -= 1;
 
-	return;
+    return;
 }
 
 
@@ -44,16 +44,16 @@ void Solve(int x, int y){
 
 
 int main(){
-	cin >> R >> C;
-	for(int i = 0; i < R; i++){
-		for(int j = 0; j < C; j++){
-			cin >> map[i][j];
-		}
-	}
+    cin >> R >> C;
+    for(int i = 0; i < R; i++){
+        for(int j = 0; j < C; j++){
+            cin >> map[i][j];
+        }
+    }
 
-	Solve(0, 0);
+    Solve(0, 0);
 
-	cout << ans << '\n';
+    cout << ans << '\n';
 
-	return 0;
+    return 0;
 }
